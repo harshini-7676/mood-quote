@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mood Quotes Generator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f8ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 10px;
+    }
+    h1 {
+      color: #333;
+    }
+    select, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+    #quote {
+      margin-top: 20px;
+      padding: 20px;
+      max-width: 500px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      font-size: 18px;
+      color: #447;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>How are you feeling?</h1>
+
+  <select id="mood-select">
+    <option value="">--Select Mood--</option>
+    <option value="happy">Happy</option>
+    <option value="sad">Sad</option>
+    <option value="motivated">Motivated</option>
+  </select>
+
+  <button onclick="showQuote()">Get Quote</button>
+
+  <div id="quote">Your quote will appear here...</div>
+
+  <script>
+    const quotes = {
+      happy: [
+        "Smile, it's free therapy!",
+        "Happiness is a journey, not a destination.",
+        "The purpose of our lives is to be happy.",
+        "A day without laughter is a day wasted.",
+        "Choose happiness daily and it will choose you back.",
+        "Happiness is a choice."
+      ],
+      sad: [
+        "It's okay to feel sad sometimes.",
+        "This too shall pass.",
+        "Crying is how your heart speaks when your lips can’t explain the pain.",
+        "Every storm runs out of rain.",
+        "Sadness flies away on the wings of time.",
+        "It's ok to cry,ok to start over,ok to struggle but not ok to stay still."
+      ],
+      motivated: [
+        "Keep going, you're doing great!",
+        "Believe in yourself!",
+        "Push yourself, because no one else is going to do it for you.",
+        "Success doesn’t come from what you do occasionally, it comes from what you do consistently.",
+        "The only limit to our realization of tomorrow is our doubts of today.",
+        "Keep going, you are half way there."
+      ]
+    };
+
+    function showQuote() {
+      const mood = document.getElementById("mood-select").value;
+      const quoteArea = document.getElementById("quote");
+
+      if (mood && quotes[mood]) {
+        const quoteList = quotes[mood];
+        const randomIndex = Math.floor(Math.random() * quoteList.length);
+        quoteArea.textContent = quoteList[randomIndex];
+      } else {
+        quoteArea.textContent = "Please select a mood.";
+      }
+    }
+  </script>
+
+</body>
+</html>
